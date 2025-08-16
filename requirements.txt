@@ -7,7 +7,7 @@ langchain-community
 langchain-huggingface
 langchain-chroma
 
-chromadb
+chromadb==0.4.24
 faiss-cpu
 
 sentence-transformers
