@@ -13,3 +13,5 @@ faiss-cpu
 sentence-transformers
 transformers
 torch
+
+pysqlite3-binary
