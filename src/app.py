@@ -40,13 +40,11 @@ with st.sidebar:
     st.caption("Pick a lightweight model if you don't have a GPU.")
     model_name = st.selectbox(
         "Instruction model",
-        options=[
-            "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-            "Qwen/Qwen2-1.5B-Instruct",
-            "mistralai/Mistral-7B-Instruct-v0.2",
-            "HuggingFaceH4/zephyr-7b-beta",
-        ],
-        index=0,
+    options=[
+        "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        "HuggingFaceH4/zephyr-7b-beta",  # risky on Streamlit, may crash
+    ],
+    index=0,
     )
     temperature = st.slider("Temperature", 0.0, 1.5, 0.2, 0.05)
     top_p = st.slider("Top-p", 0.1, 1.0, 0.95, 0.05)
