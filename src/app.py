@@ -1,6 +1,11 @@
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+import numpy as np
+
+# Patch for NumPy 2.0 compatibility
+if not hasattr(np, "float_"):
+    np.float_ = np.float64
 
 import os
 import time
