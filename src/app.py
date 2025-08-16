@@ -210,10 +210,6 @@ User: {user_msg}
 Assistant:
 """.strip()
     return prompt
-
-# -----------------------------
-# Streaming generation
-# -----------------------------
 @torch.inference_mode()
 def stream_generate(tokenizer, model, prompt: str, temperature: float, top_p: float, max_new_tokens: int):
     input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(model.device)
