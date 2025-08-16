@@ -6,7 +6,13 @@ import numpy as np
 # Patch for NumPy 2.0 compatibility
 if not hasattr(np, "float_"):
     np.float_ = np.float64
+from chromadb import Client
+from chromadb.config import Settings
 
+client = Client(Settings(
+    chroma_db_impl="duckdb+parquet",
+    persist_directory=None  # memory only
+))
 import os
 import time
 import threading
