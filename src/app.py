@@ -181,18 +181,15 @@ def docs_to_chunks(raw_docs, target_words: int, overlap_sents: int) -> List[str]
 def make_vectorstore_from_texts(texts: List[str], persist_dir: str, backend: str):
     embeddings = get_embeddings()
     if backend.startswith("Chroma"):
-        vs = Chroma.from_texts(texts, embedding=embeddings, persist_directory=persist_dir)
-        vs.persist()
+        vs = Chroma.from_texts(
+            texts=texts,
+            embedding=embeddings,
+            persist_directory=persist_dir  # optional; omit for in-memory
+        )
         st.session_state.vectorstore = vs
         st.session_state.faiss = None
-        st.session_state.faiss_count = vs._collection.count()
-        return vs
-    else:
-        faiss = FAISS.from_texts(texts, embedding=embeddings)
-        st.session_state.faiss = faiss
-        st.session_state.vectorstore = None
         st.session_state.faiss_count = len(texts)
-        return faiss
+        return vs
 
 SYSTEM_PROMPT = (
     "You are a helpful legal/policy assistant. Answer using ONLY the provided context. "
