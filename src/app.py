@@ -11,7 +11,7 @@ from chromadb.config import Settings
 
 client = Client(Settings(
     chroma_db_impl="duckdb+parquet",
-    persist_directory=None  # memory only
+    persist_directory='./chroma_db'  # memory only
 ))
 import os
 import time
